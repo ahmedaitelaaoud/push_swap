@@ -6,11 +6,13 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 10:11:09 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/16 18:13:16 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:06:43 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 typedef struct s_list
 {
@@ -20,9 +22,32 @@ typedef struct s_list
 	struct s_list	*prev;
 }					t_list;
 
-// void parse_args(int argc, char **argv, t_list **stack_a)
-// {
-// }
+//*Error management (Alarm)
+void	ft_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+//*Add the new node to stack
+void	add_lst(t_list **stack, t_list *new_node)
+{
+	t_list	*last;
+
+	last = *stack;
+	//*Check if stack is empty (not crush)
+	if (*stack == NULL)
+		// TODO: Should know what problem cause if i don't check the NULL
+	{
+		*stack = new_node;
+		new_node->prev = NULL;
+		return ;
+	}
+	while (last->next != NULL)
+		last = last->next;
+	last->next = new_node;
+	new_node->prev = last;
+}
+//*Add a new node
 t_list	*lst_new(int value)
 {
 	t_list	*new_node;
@@ -96,8 +121,39 @@ long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-// #include <stdio.h>
-// int main()
-// {
-//	printf("%ld", ft_atol(""));
-// }
+void	parse_args(int argc, char **argv, t_list **stack)
+{
+	int		i;
+	long	nb;
+
+	i = 1;
+	nb = 0;
+	while (i < argc)
+	{
+		if (is_number(argv[i]) == 0)
+			ft_error();
+		nb = ft_atol(argv[i]);
+		if (nb < -2147483648 || nb > 2147483647)
+			ft_error();
+		if (check_duplicate(*stack, (int)nb) == 1)
+			ft_error();
+		add_lst(stack, lst_new((int)nb));
+		i++;
+	}
+}
+void	print_lst(t_list *stack)
+{
+	while (stack)
+	{
+		printf("Value: %d\n", stack->value);
+		stack = stack->next;
+	}
+}
+int	main(int argc, char **argv)
+{
+	t_list	*stack;
+
+	stack = NULL;
+	parse_args(argc, argv, &stack);
+	print_lst(stack);
+}
