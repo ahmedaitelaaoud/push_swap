@@ -6,6 +6,13 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 11:15:14 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/24 11:15:16 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/26 19:11:10 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
+
+static void	rotate(t_list **stack)
+{
+
+}

@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 11:15:17 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/25 16:02:14 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/25 16:17:22 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	swap(t_list **stack)
 	first = *stack;
 	second = first->next;
 	*stack = second;
-	first->next = first->next->next;
+	first->next = second->next;
 	second->next = first;
 	first->prev = second;
 	second->prev = NULL;
