@@ -42,28 +42,28 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	parse_args(argc, argv, &stack_a);
 	parse_args(argc, argv, &stack_b);
-	//TODO For swap
-	sa(&stack_a);
-	print_list(stack_a, stack_b);
-	printf("\n");
-	sb(&stack_b);
-	print_list(stack_a, stack_b);
-	printf("\n");
-	ss(&stack_a, &stack_b);
-	print_list(stack_a, stack_b);
-	//TODO For push
-	pa(&stack_b, &stack_a);
-	print_list(stack_a, stack_b);
-	printf("\n");
-	pb(&stack_a, &stack_b);
-	print_list(stack_a, stack_b);
-	printf("\n");
-	// //TODO For rotate
+	// //TODO For swap
+	// sa(&stack_a);
 	// print_list(stack_a, stack_b);
 	// printf("\n");
-	// ra(&stack_a);
+	// sb(&stack_b);
 	// print_list(stack_a, stack_b);
 	// printf("\n");
+	// ss(&stack_a, &stack_b);
+	// print_list(stack_a, stack_b);
+	// //TODO For push
+	// pa(&stack_b, &stack_a);
+	// print_list(stack_a, stack_b);
+	// printf("\n");
+	// pb(&stack_a, &stack_b);
+	// print_list(stack_a, stack_b);
+	// printf("\n");
+	// //TODO For rrotate
+	print_list(stack_a, stack_b);
+	printf("\n");
+	sort_three(&stack_a);
+	print_list(stack_a, stack_b);
+	printf("\n");
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 }
