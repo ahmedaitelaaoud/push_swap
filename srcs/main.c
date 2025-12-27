@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 19:04:59 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/26 18:17:53 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/27 11:46:49 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ int	main(int argc, char **argv)
 	pb(&stack_a, &stack_b);
 	print_list(stack_a, stack_b);
 	printf("\n");
+	// //TODO For rotate
+	// print_list(stack_a, stack_b);
+	// printf("\n");
+	// ra(&stack_a);
+	// print_list(stack_a, stack_b);
+	// printf("\n");
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 }

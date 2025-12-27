@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:42:15 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/26 18:05:50 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/26 19:32:17 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void				pa(t_list **stack_b, t_list **stack_a);
 void				pb(t_list **stack_a, t_list **stack_b);
 
 // srcs/commands/rotate.c
-
-
+void				ra(t_list **stack_a);
+void				rb(t_list **stack_b);
+void				rr(t_list **stack_a, t_list **stack_b);
 #endif
