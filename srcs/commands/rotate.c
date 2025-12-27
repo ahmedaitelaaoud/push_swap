@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 11:15:14 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/26 19:37:30 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/27 12:32:35 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static void	rotate(t_list **stack)
 {
-	t_list *node_to_move;
-	t_list *head;
-	head = (*stack)->next;
+	t_list *first;
+	t_list *tail;
+
 	if (!stack || !*stack || (*stack)->next == NULL)
 		return ;
-	node_to_move = *stack;
-	head->prev = NULL;
-	while((*stack)->next != NULL)
-	{
-		*stack = (*stack)->next;
-	}
-	node_to_move->next = NULL;
-	node_to_move->prev = *stack;
-	(*stack)->next = node_to_move;
+	first = *stack;
+	tail = *stack;
+	while(tail->next != NULL)
+		tail = tail->next;
+	(*stack) = first->next;
+	(*stack)->prev = NULL;
+	first->next = NULL;
+	tail->next = first;
+	first->prev = tail;
 }
 
 void	ra(t_list **stack_a)
