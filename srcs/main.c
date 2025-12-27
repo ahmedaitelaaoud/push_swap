@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 19:04:59 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/27 11:46:49 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/27 23:27:12 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_list(t_list *a, t_list *b)
 	printf("Stack A: ");
 	if (!a)
 		printf("empty");
-	while(a)
+	while (a)
 	{
 		printf("[%d]", a->value);
 		a = a->next;
@@ -25,7 +25,7 @@ void	print_list(t_list *a, t_list *b)
 	printf("\nStack B: ");
 	if (!b)
 		printf("empty");
-	while(b)
+	while (b)
 	{
 		printf("[%d]", b->value);
 		b = b->next;
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 	// //TODO For rrotate
 	print_list(stack_a, stack_b);
 	printf("\n");
-	sort_three(&stack_a);
+	sort_five(&stack_a, &stack_b);
 	print_list(stack_a, stack_b);
 	printf("\n");
 	free_stack(&stack_a);

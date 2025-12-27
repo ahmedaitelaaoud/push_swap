@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 14:42:15 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/26 19:32:17 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/27 23:28:04 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_list
 }					t_list;
 
 // --- PROTOTYPES ---
-void	print_list(t_list *a, t_list *b);
+void				print_list(t_list *a, t_list *b);
 // srcs/parsing/check_args.c
 void				ft_error(void);
 int					check_duplicate(t_list *stack, int value);
@@ -66,5 +66,7 @@ void				rrb(t_list **stack_b);
 void				rrr(t_list **stack_a, t_list **stack_b);
 // srcs/sort/sort_tiny.c
 void				sort_three(t_list **stack);
+void				sort_four(t_list **stack_a, t_list **stack_b);
+void				sort_five(t_list **stack_a, t_list **stack_b);
 
 #endif

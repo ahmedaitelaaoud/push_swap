@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 11:15:09 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/27 12:38:14 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/27 23:28:24 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 static void	rev_rotate(t_list **stack)
 {
-	t_list *head = *stack;
-	t_list *tail = *stack;
+	t_list	*head;
+	t_list	*tail;
 
+	head = *stack;
+	tail = *stack;
 	if (!stack || !*stack || (*stack)->next == NULL)
 		return ;
 	while (tail->next)
