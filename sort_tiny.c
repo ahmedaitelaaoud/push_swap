@@ -61,7 +61,7 @@ void	sort_four(t_list **stack_a, t_list **stack_b)
 	bring_to_top(stack_a, min);
 	pb(stack_a, stack_b);
 	sort_three(stack_a);
-	pa(stack_b, stack_a);
+	pa(stack_a, stack_b);
 }
 
 void	sort_five(t_list **stack_a, t_list **stack_b)
@@ -75,6 +75,6 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 	bring_to_top(stack_a, min);
 	pb(stack_a, stack_b);
 	sort_three(stack_a);
-	pa(stack_b, stack_a);
-	pa(stack_b, stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
 }

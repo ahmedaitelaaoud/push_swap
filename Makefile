@@ -10,21 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= srcs/parsing/check_args.c \
-		srcs/parsing/ft_split.c \
-		srcs/parsing/pars_init.c \
-		srcs/stack/stack_utils.c \
-		srcs/stack/stack_init.c \
-		srcs/commands/push.c \
-		srcs/commands/swap.c \
-		srcs/commands/rotate.c \
-		srcs/commands/rev_rotate.c \
-		srcs/sort/sort_tiny.c \
-		srcs/main.c
+SRCS	= check_args.c \
+		ft_split.c \
+		pars_init.c \
+		stack_utils.c \
+		stack_init.c \
+		push.c \
+		swap.c \
+		rotate.c \
+		rev_rotate.c \
+		sort_tiny.c \
+		main.c
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
 RM		= rm -f
-CFLAGS	= -Wall -Wextra -Werror -I includes
+CFLAGS	= -Wall -Wextra -Werror
 
 NAME	= push_swap
 

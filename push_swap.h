@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 14:42:15 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/28 12:19:13 by aait-ela         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -52,7 +42,7 @@ void				sb(t_list **stack_b);
 void				ss(t_list **stack_a, t_list **stack_b);
 
 // srcs/commands/push.c
-void				pa(t_list **stack_b, t_list **stack_a);
+void				pa(t_list **stack_a, t_list **stack_b);
 void				pb(t_list **stack_a, t_list **stack_b);
 
 // srcs/commands/rotate.c
