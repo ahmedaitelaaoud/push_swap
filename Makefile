@@ -20,6 +20,7 @@ SRCS	= check_args.c \
 		rotate.c \
 		rev_rotate.c \
 		sort_tiny.c \
+		sort_big.c \
 		main.c
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
