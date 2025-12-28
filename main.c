@@ -42,8 +42,6 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	parse_args(argc, argv, &stack_a);
-	print_list(stack_a, stack_b);
-	printf("\n");
 	size = lst_size(stack_a);
 	if (size == 2)
 		sa(&stack_a);
@@ -54,8 +52,7 @@ int	main(int argc, char **argv)
 	else if (size == 5)
 		sort_five(&stack_a, &stack_b);
 	else if (size > 5) sort_big(&stack_a, &stack_b);
-	print_list(stack_a, stack_b);
-	printf("\n");
+		sort_big(&stack_a, &stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 }
