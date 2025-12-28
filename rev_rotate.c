@@ -16,17 +16,22 @@ static void	rev_rotate(t_list **stack)
 {
 	t_list	*head;
 	t_list	*tail;
+	t_list *before_tail;
 
-	head = *stack;
-	tail = *stack;
 	if (!stack || !*stack || (*stack)->next == NULL)
 		return ;
+	head = *stack;
+	tail = *stack;
 	while (tail->next)
+	{
+		before_tail = tail;
 		tail = tail->next;
-	tail->prev->next = NULL;
+	}
+	before_tail->next = NULL;
 	tail->next = head;
-	tail->prev = NULL;
 	*stack = tail;
+	tail->prev = NULL;
+	head->prev = tail;
 }
 
 void	rra(t_list **stack_a)
