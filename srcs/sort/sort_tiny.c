@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 11:14:45 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/27 23:27:53 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/28 12:19:04 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,23 @@ void	sort_four(t_list **stack_a, t_list **stack_b)
 	int	min;
 
 	min = get_min(*stack_a);
-	if ((*stack_a)->value == min)
-		pb(stack_a, stack_b);
-	else if ((*stack_a)->next->value == min)
-	{
-		sa(stack_a);
-		pb(stack_a, stack_b);
-	}
-	else if ((*stack_a)->next->next->value == min)
-	{
-		rra(stack_a);
-		rra(stack_a);
-		pb(stack_a, stack_b);
-	}
-	else if ((*stack_a)->next->next->next->value == min)
-	{
-		rra(stack_a);
-		pb(stack_a, stack_b);
-	}
+	bring_to_top(stack_a, min);
+	pb(stack_a, stack_b);
 	sort_three(stack_a);
+	pa(stack_b, stack_a);
+}
+
+void	sort_five(t_list **stack_a, t_list **stack_b)
+{
+	int	min;
+
+	min = get_min(*stack_a);
+	bring_to_top(stack_a, min);
+	pb(stack_a, stack_b);
+	min = get_min(*stack_a);
+	bring_to_top(stack_a, min);
+	pb(stack_a, stack_b);
+	sort_three(stack_a);
+	pa(stack_b, stack_a);
 	pa(stack_b, stack_a);
 }

@@ -14,6 +14,7 @@ SRCS	= srcs/parsing/check_args.c \
 		srcs/parsing/ft_split.c \
 		srcs/parsing/pars_init.c \
 		srcs/stack/stack_utils.c \
+		srcs/stack/stack_init.c \
 		srcs/commands/push.c \
 		srcs/commands/swap.c \
 		srcs/commands/rotate.c \
