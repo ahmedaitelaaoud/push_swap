@@ -13,8 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdbool.h>
-# include <stdio.h> // For printf (remove before submission if needed)
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -45,6 +43,7 @@ t_list				*lst_new(int value);
 void				add_lst(t_list **stack, t_list *new_node);
 void				free_stack(t_list **stack);
 void				free_and_error(t_list **stack, char **args);
+void				set_index(t_list *stack);
 
 // swap.c
 void				sa(t_list **stack_a);
@@ -71,10 +70,7 @@ void				sort_five(t_list **stack_a, t_list **stack_b);
 // stack_init.c
 void				bring_to_top(t_list **stack, int value);
 int					lst_size(t_list *stack);
-
+// sort_big.c
 void				sort_big(t_list **stack_a, t_list **stack_b);
-void				set_index(t_list *stack);
-
-// void				print_list(t_list *a, t_list *b);
 
 #endif

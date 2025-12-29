@@ -12,27 +12,6 @@
 
 #include "push_swap.h"
 
-void	print_list(t_list *a, t_list *b)
-{
-	printf("Stack A: ");
-	if (!a)
-		printf("empty");
-	while (a)
-	{
-		printf("[%d]", a->value);
-		a = a->next;
-	}
-	printf("\nStack B: ");
-	if (!b)
-		printf("empty");
-	while (b)
-	{
-		printf("[%d]", b->value);
-		b = b->next;
-	}
-	printf("\n");
-}
-
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
