@@ -47,7 +47,7 @@ int	is_number(char const *str)
 	return (1);
 }
 
-long	ft_atol(char const *str)
+long	ft_atol(const char *str)
 {
 	int		i;
 	long	sign;
@@ -56,18 +56,21 @@ long	ft_atol(char const *str)
 	i = 0;
 	sign = 1;
 	value = 0;
-	while (str[i])
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-			i++;
-		if (str[i] == '-' || str[i] == '+')
-		{
-			if (str[i] == '-')
-				sign = -1;
-			i++;
-		}
-		while (str[i] >= '0' && str[i] <= '9')
-			value = value * 10 + (str[i++] - '0');
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		value = value * 10 + (str[i++] - '0');
+		if (sign == 1 && value > 2147483647)
+			return (2147483648);
+		if (sign == -1 && value > 2147483648)
+			return (-2147483649);
 	}
 	return (value * sign);
 }
