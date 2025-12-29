@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 15:44:25 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/25 13:09:10 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/29 15:33:26 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,26 @@ void	free_and_error(t_list **stack, char **args)
 	ft_free_split(args);
 	free_stack(stack);
 	ft_error();
+}
+
+void	set_index(t_list *stack)
+{
+	t_list	*ptr;
+	t_list	*current;
+	int		count;
+
+	ptr = stack;
+	while (ptr)
+	{
+		count = 0;
+		current = stack;
+		while (current)
+		{
+			if (ptr->value > current->value)
+				count++;
+			current = current->next;
+		}
+		ptr->index = count;
+		ptr = ptr->next;
+	}
 }

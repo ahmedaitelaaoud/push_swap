@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 19:04:59 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/28 15:02:44 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/29 15:33:35 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	parse_args(argc, argv, &stack_a);
 	size = lst_size(stack_a);
+	set_index(stack_a);
 	if (size == 2)
 		sa(&stack_a);
 	else if (size == 3)
@@ -51,8 +52,9 @@ int	main(int argc, char **argv)
 		sort_four(&stack_a, &stack_b);
 	else if (size == 5)
 		sort_five(&stack_a, &stack_b);
-	 else if (size > 5)
+	else if (size > 5)
 		sort_big(&stack_a, &stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
+	return (0);
 }

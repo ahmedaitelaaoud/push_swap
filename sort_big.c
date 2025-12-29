@@ -1,59 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_big.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/29 15:33:57 by aait-ela          #+#    #+#             */
+/*   Updated: 2025/12/29 15:34:03 by aait-ela         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-void	set_index(t_list *stack)
-{
-	t_list *ptr;
-	t_list *current;
-	int count;
-
-	ptr = stack;
-	while(ptr)
-	{
-		count = 0;
-		current = stack;
-		while(current)
-		{
-			if(ptr->value > current->value)
-				count++;
-			current = current->next;
-		}
-		ptr->index = count;
-		ptr = ptr->next;
-	}
-}
 
 static int	get_max_index(t_list *stack)
 {
-	int max = stack->index;
-	while(stack)
+	int	max;
+
+	max = stack->index;
+	while (stack)
 	{
-		if(stack->index > max)
+		if (stack->index > max)
 			max = stack->index;
 		stack = stack->next;
 	}
 	return (max);
 }
 
-static int get_pos_of_index(t_list *stack, int index_to_find)
+static int	get_pos_of_index(t_list *stack, int index_to_find)
 {
-	int pos = 0;
+	int	pos;
+
+	pos = 0;
 	while (stack)
 	{
 		if (stack->index == index_to_find)
-			return(pos);
+			return (pos);
 		pos++;
 		stack = stack->next;
 	}
-	return -1;
+	return (-1);
 }
 
-void	sort_big(t_list **stack_a, t_list **stack_b)
+static void	push_to_b(t_list **stack_a, t_list **stack_b, int range)
 {
-	int i = 0;
-	int range = 15;
-	while(*stack_a)
+	int	i;
+
+	i = 0;
+	while (*stack_a)
 	{
-		if ((*stack_a)->index < i)
+		if ((*stack_a)->index <= i)
 		{
 			pb(stack_a, stack_b);
 			rb(stack_b);
@@ -64,24 +59,46 @@ void	sort_big(t_list **stack_a, t_list **stack_b)
 			pb(stack_a, stack_b);
 			i++;
 		}
-		else if ((*stack_a)->index > i + range)
+		else
 			ra(stack_a);
 	}
+}
+
+static void	push_to_a(t_list **stack_a, t_list **stack_b)
+{
+	int	max_idx;
+	int	max_pos;
+	int	size_b;
+
 	while (*stack_b)
 	{
-		int max_idx = get_max_index(*stack_b);
-		int max_pos = get_pos_of_index(*stack_b, max_idx);
-		int size_b = lst_size(*stack_b);
+		max_idx = get_max_index(*stack_b);
+		max_pos = get_pos_of_index(*stack_b, max_idx);
+		size_b = lst_size(*stack_b);
 		if (max_pos <= size_b / 2)
 		{
-			while((*stack_b)->index != max_idx)
+			while ((*stack_b)->index != max_idx)
 				rb(stack_b);
 		}
 		else
 		{
-			while((*stack_b)->index != max_idx)
+			while ((*stack_b)->index != max_idx)
 				rrb(stack_b);
 		}
 		pa(stack_a, stack_b);
 	}
+}
+
+void	sort_big(t_list **stack_a, t_list **stack_b)
+{
+	int	range;
+	int	num;
+
+	num = lst_size(*stack_a);
+	if (num >= 500)
+		range = 40;
+	else
+		range = 15;
+	push_to_b(stack_a, stack_b, range);
+	push_to_a(stack_a, stack_b);
 }

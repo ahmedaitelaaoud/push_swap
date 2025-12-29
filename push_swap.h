@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 15:02:48 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/28 15:02:50 by aait-ela         ###   ########.fr       */
+/*   Updated: 2025/12/29 15:33:45 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int					lst_size(t_list *stack);
 void				sort_big(t_list **stack_a, t_list **stack_b);
 void				set_index(t_list *stack);
 
-//void				print_list(t_list *a, t_list *b);
-
+// void				print_list(t_list *a, t_list *b);
 
 #endif
