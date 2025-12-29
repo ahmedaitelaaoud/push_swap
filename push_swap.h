@@ -72,7 +72,10 @@ void				sort_five(t_list **stack_a, t_list **stack_b);
 void				bring_to_top(t_list **stack, int value);
 int					lst_size(t_list *stack);
 
-void	sort_big(t_list **stack_a, t_list **stack_b);
+void				sort_big(t_list **stack_a, t_list **stack_b);
+void				set_index(t_list *stack);
+
+//void				print_list(t_list *a, t_list *b);
 
 
 #endif
