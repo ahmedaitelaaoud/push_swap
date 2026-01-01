@@ -6,7 +6,7 @@
 /*   By: aait-ela <aait-ela@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 11:14:36 by aait-ela          #+#    #+#             */
-/*   Updated: 2025/12/29 15:32:50 by aait-ela         ###   ########.fr       */
+/*   Updated: 2026/01/01 20:09:55 by aait-ela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,15 @@ void	bring_to_top(t_list **stack, int value)
 	else
 		while ((*stack)->value != value)
 			rra(stack);
+}
+
+int	is_sorted(t_list *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }

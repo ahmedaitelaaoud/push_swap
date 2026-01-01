@@ -98,7 +98,7 @@ void	sort_big(t_list **stack_a, t_list **stack_b)
 	if (num >= 500)
 		range = 33;
 	else
-		range = 10;
+		range = 15;
 	push_to_b(stack_a, stack_b, range);
 	push_to_a(stack_a, stack_b);
 }
