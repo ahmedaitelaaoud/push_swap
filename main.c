@@ -29,6 +29,8 @@ int	main(int argc, char **argv)
 		free_stack(&stack_b);
 		return (0);
 	}
+	else if (size == 2)
+		sa(&stack_a);
 	else if (size == 3)
 		sort_three(&stack_a);
 	else if (size == 4)
@@ -41,3 +43,4 @@ int	main(int argc, char **argv)
 	free_stack(&stack_b);
 	return (0);
 }
+

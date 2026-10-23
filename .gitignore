@@ -1,0 +1,3 @@
+*.o
+push_swap
+__pycache__/
