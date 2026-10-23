@@ -1,66 +1,73 @@
-# 🦋 Push_swap
+# push_swap
 
-![Score](https://img.shields.io/badge/Score-100%2F100-brightgreen?style=for-the-badge&logo=42)
-![Language](https://img.shields.io/badge/Language-C-blue?style=for-the-badge&logo=c)
-![Algorithm](https://img.shields.io/badge/Algorithm-Chunking%20%2F%20Butterfly-orange?style=for-the-badge)
+A C program that emits instructions to sort integers using two stacks and a restricted set of operations.
 
-**"Because Swap_push isn't as natural."**
+Built as a 42 curriculum project to practice linked lists, input validation, and algorithm design under operational constraints.
 
-This project involves sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions. To succeed, you have to manipulate various types of algorithms and choose the most appropriate solution (optimized for data sorting) for determining the "best" steps.
+## Build and use
 
----
+Requires a C compiler and Make.
 
-## 🚀 The Algorithm: The "Butterfly" Strategy
+```bash
+git clone https://github.com/ahmedaitelaaoud/push_swap.git
+cd push_swap
+make
+./push_swap 3 2 1
+```
 
-Unlike standard sorting algorithms (Quicksort, Merge Sort), `push_swap` restricts us to two stacks and specific operations. This project uses a **Dynamic Chunking Strategy** (often called the "Butterfly" method) to achieve 5-star performance.
+The program prints operations, not the sorted integers. For this example it emits:
 
-### 🔢 Phase 1: Normalization & Indexing
-The algorithm doesn't care about the actual values (e.g., `-2147483648`, `42`, `999`). It only cares about their **Rank**.
-1.  Input is parsed and checked for errors (duplicates, non-integers).
-2.  Values are assigned an index from `0` to `N-1` based on their size.
-    * *Example:* `[-50, 100, 2]` → `[0, 2, 1]`
+```text
+ra
+sa
+```
 
-### 🦋 Phase 2: The Butterfly (Stack A -> Stack B)
-We push numbers from **A** to **B** in chunks, creating a distribution curve in B (Butterfly shape). We define a dynamic `range` (window size).
+Already sorted input emits nothing. Invalid input, including duplicate integers, is rejected with `Error` on standard error.
 
-* **If `index <= i` (Small):** Push to B (`pb`) and rotate B (`rb`) to send it to the bottom.
-* **If `index <= i + range` (Medium):** Push to B (`pb`). It stays at the top.
-* **If `index > i + range` (Large):** Rotate A (`ra`). Keep it for later.
+## Algorithm
 
-This ensures that Stack B is built with the largest numbers concentrated near the top and middle, and smallest at the bottom.
+1. Parse integers and assign ranks from smallest to largest.
+2. Use dedicated handling for stacks of two through five elements.
+3. For larger inputs, move ranks into stack B using a moving window: 15 ranks below 500 elements, 33 at 500 or more.
+4. Repeatedly move the largest remaining rank to the top of B using the shorter rotation direction, then push it back to A.
 
-### 🎯 Phase 3: The Return (Stack B -> Stack A)
-Now Stack B is roughly sorted (large items are easy to access).
-1.  Find the position of the **maximum index** in B.
-2.  Calculate the cost: Is it faster to rotate up (`rb`) or reverse-rotate down (`rrb`)?
-3.  Move max to top and push to A (`pa`).
-4.  Repeat until B is empty.
+The window is a heuristic, not a proof of the fewest possible operations. Repeated linked-list scans also contribute to runtime; operation count and execution time are different measurements.
 
----
+## Code map
 
-## 🛠️ Instruction Set
+| Files | Responsibility |
+| --- | --- |
+| `check_args.c`, `pars_init.c`, `ft_split.c` | Parsing and validation |
+| `stack_init.c`, `stack_utils.c` | Stack construction, ranking, and helpers |
+| `swap.c`, `push.c`, `rotate.c`, `rev_rotate.c` | Stack operations |
+| `sort_tiny.c`, `sort_big.c` | Small-input routines and window-based sorting |
+| `main.c` | Size-based dispatch and cleanup |
 
-The project allows the following operations to manipulate the stacks:
+The instruction vocabulary is `sa sb ss pa pb ra rb rr rra rrb rrr`: swaps, pushes, rotations, and reverse rotations on A, B, or both.
 
-| Command | Description |
-| :--- | :--- |
-| **`sa`** | Swap the first 2 elements at the top of stack A. |
-| **`sb`** | Swap the first 2 elements at the top of stack B. |
-| **`ss`** | `sa` and `sb` at the same time. |
-| **`pa`** | Take the first element at the top of B and put it at the top of A. |
-| **`pb`** | Take the first element at the top of A and put it at the top of B. |
-| **`ra`** | Shift all elements of stack A up by 1. The first element becomes the last one. |
-| **`rb`** | Shift all elements of stack B up by 1. The first element becomes the last one. |
-| **`rr`** | `ra` and `rb` at the same time. |
-| **`rra`** | Shift all elements of stack A down by 1. The last element becomes the first one. |
-| **`rrb`** | Shift all elements of stack B down by 1. The last element becomes the first one. |
-| **`rrr`** | `rra` and `rrb` at the same time. |
+## Tests
 
----
+Python 3 is needed only for the test runner.
 
-## ⚙️ Compilation & Usage
-
-### Build
-Run the following command to compile the executable `push_swap`:
 ```bash
 make
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
+
+The tests run the real executable, replay its operations, and verify that A is sorted and B is empty. Coverage includes every permutation of sizes 1–5, deterministic samples of sizes 6, 20, 100, and 500, already sorted input, and duplicate rejection.
+
+A regression test covers descending two-element input, which previously fell through the dispatcher without producing an operation.
+
+## Limitations and next steps
+
+The test suite is not a memory-safety audit or a benchmark. Add allocation-failure and integer-boundary cases, run Valgrind or sanitizers, and publish operation-count measurements only with a reproducible generator and checker.
+
+```bash
+make clean
+make fclean
+```
+
+## License
+
+No repository-level license is currently included.
+
